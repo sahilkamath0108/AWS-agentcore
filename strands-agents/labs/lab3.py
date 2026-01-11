@@ -4,7 +4,6 @@ from strands.models.ollama import OllamaModel
 from strands_tools import file_read, file_write, http_request
 import logging
 
-# Configure the root strands logger
 logging.getLogger("strands").setLevel(logging.INFO)
 
 # Add a handler to see the logs
@@ -14,7 +13,6 @@ logging.basicConfig(
 )
 
 
-# Configure the Ollama model
 ollama_model = OllamaModel(
     model_id="gpt-oss:20b",
     host="http://localhost:11434",
@@ -33,10 +31,6 @@ Weather Information
     - Process and display weather forecast data for locations in the United States.
 """
 
-# - When retrieving weather information, first get coordinates using https://api.weather.gov/points/{latitude},{longitude},  or
-#         https://api.weather.gov/points/{zipcode}, then use the returned forecast URL. You can make additional http requests as well.
-
-# Create the agent with tools
 local_agent = Agent(
     system_prompt=system_prompt, # Define a system Prompt
     model=ollama_model,

@@ -9,9 +9,6 @@ from mcp.client.streamable_http import streamablehttp_client
 
 # New Imports
 import asyncio
-
-
-# Ollama
 ollama_model = OllamaModel(
   model_id="gpt-oss:20b",
   host="http://localhost:11434"

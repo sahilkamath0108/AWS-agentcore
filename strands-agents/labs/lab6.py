@@ -15,19 +15,14 @@ ollama_model = OllamaModel(
 
 )
 
-# Pre-req, run the following to start the streamable Http server, in a different terminal:
-# python mcp-streamable-http/python-example/server/weather.py
 streamable_http_mcp_client = MCPClient(
     lambda: streamablehttp_client(
         url="http://localhost:8123/mcp"
     ))
 
-# Create an agent with MCP tools
 with streamable_http_mcp_client:
-    # Get the tools from the MCP server
     tools = streamable_http_mcp_client.list_tools_sync()
 
-    # Create an agent with these tools
     agent = Agent(
         system_prompt="Provide weather details using the available tools.",
         model=ollama_model, 

@@ -1,6 +1,3 @@
-# Here we create a RecipeBot that recommends recipes and answers any cooking related questions.
-# https://catalog.workshops.aws/strands-agents/en-US/01-fundamentals/11-quickstart
-# https://static.us-east-1.prod.workshops.aws/public/765d51e8-8a6d-4ac6-a6e5-c2d4a79c74ac/static/images/interactive_recipe_agent.png
 
 from strands import Agent, tool
 from ddgs import DDGS
@@ -11,7 +8,6 @@ from strands.models.ollama import OllamaModel
 # Configure logging
 logging.getLogger("strands").setLevel(logging.INFO)
 
-# Define a websearch tool
 @tool
 def websearch(keywords: str, region: str = "us-en", max_results: int | None = None) -> str:
     """Search the web to get updated information."""
@@ -30,7 +26,6 @@ ollama_model = OllamaModel(
 
 )
 
-# Create a recipe assistant agent
 recipe_agent = Agent(
     model=ollama_model,
     system_prompt="""You are a cooking assistant. Find and suggest recipes as requested by the user.""", 
